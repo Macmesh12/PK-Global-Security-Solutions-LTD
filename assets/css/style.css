@@ -65,7 +65,6 @@ header{
 }
 
 .logo{
-    display:flex;
     align-items:center;
     gap:12px;
     color:var(--text-primary);
@@ -616,12 +615,17 @@ to{
 
 @media(max-width:991px){
 
+/* Stack the about content vertically on tablet-sized screens. */
 .about-container{
+    /* Use one column instead of side-by-side content. */
     grid-template-columns:1fr;
+    /* Center the text below the image. */
     text-align:center;
 }
 
+/* Keep the statistics in two columns on tablets. */
 .stats{
+    /* Create two equal-width statistic columns. */
     grid-template-columns:repeat(2,1fr);
 }
 
@@ -629,15 +633,21 @@ to{
 
 @media(max-width:600px){
 
+/* Reduce section heading size on small screens. */
 .section-header h2{
+    /* Make the heading fit narrow phone layouts. */
     font-size:32px;
 }
 
+/* Stack statistics into one column on phones. */
 .stats{
+    /* Give each statistic the full available width. */
     grid-template-columns:1fr;
 }
 
+/* Constrain the about image on small screens. */
 .about-image img{
+    /* Prevent the image from becoming too wide. */
     max-width:320px;
 }
 
@@ -807,15 +817,19 @@ to{
 
 @media(max-width:768px){
 
+/* Stack service and project cards on smaller screens. */
 .services-grid,
 .projects-container{
 
+/* Display one card per row. */
 grid-template-columns:1fr;
 
 }
 
+/* Reduce project image height on smaller screens. */
 .project-card img{
 
+/* Keep project cards compact on mobile. */
 height:210px;
 
 }
@@ -1134,15 +1148,21 @@ height:210px;
 
 @media(max-width:991px){
 
+    /* Stack the contact page columns on tablets. */
     .contact-page-grid{
+        /* Give the contact content one full-width column. */
         grid-template-columns:1fr;
     }
 
+    /* Center left-aligned contact content on tablets. */
     .left-align{
+        /* Override desktop left alignment. */
         text-align:center;
     }
 
+    /* Make the contact form action easier to tap. */
     .contact-form button{
+        /* Stretch the button across the form width. */
         width:100%;
     }
 
@@ -1150,25 +1170,36 @@ height:210px;
 
 @media(max-width:768px){
 
+    /* Reduce the contact hero heading on smaller screens. */
     .contact-hero .about-content h1{
+        /* Keep the heading within the viewport. */
         font-size:34px;
     }
 
+    /* Add compact mobile spacing around the contact page. */
     .contact-page{
+        /* Use smaller horizontal padding and preserve bottom space. */
         padding:30px 20px 80px;
     }
 
+    /* Reduce panel padding on smaller screens. */
     .contact-info-panel,
     .contact-form-panel{
+        /* Preserve readable content space inside both panels. */
         padding:24px 18px;
     }
 
+    /* Stack contact card content vertically. */
     .contact-card{
+        /* Place the icon and text one above the other. */
         flex-direction:column;
+        /* Keep the stacked content aligned to the start. */
         align-items:flex-start;
     }
 
+    /* Reduce the map height on smaller screens. */
     .map-wrapper iframe{
+        /* Keep the embedded map from dominating the page. */
         height:320px;
     }
 
@@ -1269,76 +1300,181 @@ height:210px;
 /* ================= GLOBAL RESPONSIVE ================= */
 
 @media(max-width:991px){
+    /* Stack major page regions on tablet screens. */
     .hero,
     .about-container,
     .founder-container,
     .contact-container,
     .footer-container{
+        /* Use one column for each major region. */
         grid-template-columns:1fr;
+        /* Ensure the grid layout is active. */
         display:grid;
+        /* Center the content within the new single column. */
         text-align:center;
     }
 
+    /* Center the footer logo within the stacked tablet layout. */
+    .footer-logo{
+        text-align:center;
+    }
+
+    /* Add separation between stacked hero columns. */
     .hero{
+        /* Increase the gap after the layout becomes vertical. */
         gap:40px;
+        /* Keep the hero clear of the responsive header. */
         padding-top:110px;
     }
 
+    /* Reduce the main hero heading on tablets. */
     .hero-left h1{
+        /* Fit the heading into the narrower content area. */
         font-size:42px;
     }
 
+    /* Reduce the about page hero heading on tablets. */
     .about-hero .about-content h1{
+        /* Fit the about heading into the viewport. */
         font-size:42px;
     }
 
+    /* Show the mobile navigation toggle on tablets. */
     .nav-toggle{
+        /* Display the toggle control inline with the header. */
         display:inline-flex;
     }
 
+    /* Position the collapsed navigation menu below the header. */
     .nav-links{
+        /* Remove the menu from normal document flow. */
         position:absolute;
+        /* Offset the menu slightly below the header. */
         top:calc(100% + 14px);
+        /* Align the menu with the header content area. */
         left:8%;
+        /* Keep equal spacing on the opposite side. */
         right:8%;
+        /* Arrange navigation links vertically. */
         display:flex;
+        /* Put each link on its own row. */
         flex-direction:column;
+        /* Remove horizontal spacing between rows. */
         gap:0;
+        /* Add space inside the menu panel. */
         padding:14px;
+        /* Give the open menu a dark background. */
         background:rgba(8,8,8,.98);
+        /* Outline the menu against the page. */
         border:1px solid var(--accent-soft);
+        /* Soften the menu corners. */
         border-radius:20px;
+        /* Lift the menu above surrounding content. */
         box-shadow:0 18px 40px rgba(0,0,0,.35);
+        /* Hide the menu before it is opened. */
         opacity:0;
+        /* Remove the hidden menu from accessibility hit testing. */
         visibility:hidden;
+        /* Start the closed menu slightly above its final position. */
         transform:translateY(-18px) scale(.98);
+        /* Prevent interaction while the menu is closed. */
         pointer-events:none;
+        /* Animate menu visibility and movement. */
         transition:.28s ease;
     }
 
+    /* Reveal the navigation menu when its open class is present. */
     .nav-links.is-open{
+        /* Make the open menu visible. */
         opacity:1;
+        /* Allow the open menu to be rendered. */
         visibility:visible;
+        /* Return the menu to its natural position and size. */
         transform:translateY(0) scale(1);
+        /* Allow users to select menu links. */
         pointer-events:auto;
     }
 
+    /* Separate adjacent mobile navigation links. */
     .nav-links li + li{
+        /* Add a subtle divider above every link after the first. */
         border-top:1px solid rgba(200,255,0,.10);
     }
 
+    /* Make mobile navigation links fill their rows. */
     .nav-links a{
+        /* Use the full row as the link's clickable area. */
         display:block;
+        /* Add comfortable touch spacing around the label. */
         padding:14px 12px;
     }
 
+    /* Allow the expanded navigation to extend outside the header. */
     .header-spacer,
     header{
+        /* Prevent the menu from being clipped. */
         overflow:visible;
     }
+
+
 }
 
 @media(max-width:768px){
+    /* Reduce footer spacing on mobile screens. */
+    .footer{
+        padding:55px 20px 25px;
+    }
+
+    /* Add consistent separation between stacked footer sections. */
+    .footer-container{
+        gap:32px;
+    }
+
+    /* Keep the footer logo image compact on mobile. */
+    .footer-logo img{
+        width:70px;
+        margin:0 auto 16px;
+    }
+
+    /* Reduce footer headings on mobile. */
+    .footer-logo h2,
+    .footer-links h3,
+    .footer-contact h3{
+        font-size:22px;
+        margin-bottom:12px;
+    }
+
+    /* Limit the footer description width for easier reading. */
+    .footer-logo p{
+        max-width:420px;
+        margin:0 auto;
+    }
+
+    /* Tighten footer link and contact spacing on mobile. */
+    .footer-links ul li,
+    .footer-contact p{
+        margin:9px 0;
+    }
+
+    /* Reduce the gap before social links on mobile. */
+    .footer-social{
+        gap:14px;
+        margin:32px 0 22px;
+    }
+
+    /* Make social controls slightly smaller on mobile. */
+    .footer-social a{
+        width:44px;
+        height:44px;
+        font-size:18px;
+    }
+
+    /* Reduce footer bottom spacing on mobile. */
+    .footer-bottom{
+        padding-top:20px;
+        font-size:14px;
+    }
+
     section{
         padding:80px 20px;
     }
@@ -1404,123 +1540,233 @@ height:210px;
     }
 
     .about-meta span{
+        /* Reduce section spacing on smaller screens. */
         width:100%;
+            /* Use compact vertical and horizontal section padding. */
         max-width:320px;
     }
 
+        /* Reduce the main hero heading on mobile. */
     .about-story .about-image img{
+            /* Keep the heading readable without overflowing. */
         max-width:320px;
     }
 
+        /* Reduce hero paragraph text on mobile. */
     .founder-container{
+            /* Fit supporting text comfortably on narrow screens. */
         gap:30px;
     }
 
+        /* Stack hero action buttons vertically. */
     .founder-image img{
+            /* Place buttons one below another. */
         max-width:320px;
+            /* Stretch the button group to the available width. */
     }
 
     .founder-content h3{
+        /* Make primary and outlined actions easier to tap. */
         font-size:28px;
     }
+            /* Use the full available button width. */
 
+            /* Center the button labels. */
     .founder-content h4{
         font-size:18px;
     }
+        /* Reduce section heading size on mobile. */
 
+            /* Keep headings within the viewport. */
     .about-gallery .projects-container{
         gap:24px;
     }
+        /* Limit the hero image size on mobile. */
 
+            /* Use the smaller of a fixed or viewport-based width. */
     .about-gallery .project-card img{
         height:200px;
     }
+        /* Center about metadata on mobile. */
 
+            /* Center metadata items along the main axis. */
     .chooseus-hero{
         padding-top:120px;
     }
+        /* Add extra top space to the about hero. */
 
+            /* Keep the hero clear of the responsive header. */
     .chooseus-hero .about-content h1{
         font-size:34px;
     }
+        /* Reduce the about hero heading on mobile. */
 
+            /* Fit the heading into the mobile content width. */
     .chooseus-card img{
         height:180px;
     }
+        /* Reduce supporting text sizes across about sections. */
 
     .trust-grid{
         gap:20px;
     }
 
+            /* Keep paragraph text compact but readable. */
     .about-cta .btn{
         width:100%;
         max-width:320px;
+        /* Center smaller about and founder headings. */
     }
 
     .navbar{
         padding:16px 20px;
+            /* Align these headings with the mobile layout. */
     }
 
     .nav-links{
+        /* Stack about metadata into a centered list. */
         left:20px;
+            /* Center metadata along the horizontal axis. */
         right:20px;
+            /* Place each metadata item on its own row. */
     }
+            /* Center each item within the column. */
+
 }
 
+        /* Limit the width of each metadata item. */
 @media(max-width:480px){
-    .logo{
-        font-size:22px;
+    /* Use compact footer padding on phone screens. */
+    .footer{
+        padding:45px 16px 20px;
     }
 
-    .logo img{
-        width:44px;
-        height:44px;
+    /* Tighten the footer sections on phone screens. */
+    .footer-container{
+        gap:26px;
     }
 
-    .hero-left h1{
-        font-size:30px;
+    /* Reduce the footer logo image on phones. */
+    .footer-logo img{
+        width:60px;
+        margin-bottom:14px;
     }
 
-    .about-hero .about-content h1{
-        font-size:30px;
+    /* Reduce the footer brand heading on phones. */
+    .footer-logo h2{
+        font-size:20px;
     }
 
-    .chooseus-hero .about-content h1{
-        font-size:30px;
+    /* Keep footer text readable within narrow screens. */
+    .footer-logo p,
+    .footer-contact p,
+    .footer-links a{
+        font-size:14px;
     }
 
-    .about-hero .about-content h3,
-    .about-story .about-content h3,
-    .founder-content h3{
-        font-size:22px;
+    /* Reduce social icon spacing on phones. */
+    .footer-social{
+        gap:10px;
+        margin:26px 0 18px;
     }
 
-    .about-hero .about-content p,
-    .about-story .about-content p,
-    .about-gallery .project-content p,
-    .founder-content p,
-    .about-cta p{
-        font-size:15px;
-        line-height:1.8;
-    }
-
-    .about-meta span{
-        font-size:13px;
-        padding:9px 14px;
-    }
-
-    .founder-content h4{
+    /* Reduce social controls on phones. */
+    .footer-social a{
+        width:40px;
+        height:40px;
         font-size:16px;
     }
 
+    /* Keep the copyright text inside the phone viewport. */
+    .footer-bottom{
+        font-size:13px;
+        line-height:1.6;
+    }
+
+            /* Allow the item to expand across the content area. */
+    .logo{
+            /* Prevent very wide metadata pills. */
+        font-size:22px;
+    }
+
+        /* Constrain the about story image on mobile. */
+    .logo img{
+            /* Keep the image from exceeding the mobile layout. */
+        width:44px;
+        height:44px;
+    }
+        /* Add space between stacked founder content. */
+
+            /* Separate the founder image and text blocks. */
+
+    .hero-left h1{
+        /* Constrain the founder image on mobile. */
+        font-size:30px;
+            /* Keep the image within the available content width. */
+    }
+
+    .about-hero .about-content h1{
+        /* Reduce the founder heading on mobile. */
+        font-size:30px;
+            /* Keep the heading balanced in the narrow layout. */
+    }
+
+    .chooseus-hero .about-content h1{
+        /* Reduce the founder role heading on mobile. */
+        font-size:30px;
+            /* Keep secondary heading text compact. */
+    }
+
+    .about-hero .about-content h3,
+        /* Tighten the project grid gap on the about page. */
+    .about-story .about-content h3,
+            /* Reduce whitespace between stacked projects. */
+    .founder-content h3{
+        font-size:22px;
+    }
+        /* Reduce project image height on mobile. */
+
+            /* Keep project cards compact. */
+    .about-hero .about-content p,
+    .about-story .about-content p,
+    .about-gallery .project-content p,
+        /* Reduce choose-us card image height on mobile. */
+    .founder-content p,
+            /* Keep the choose-us heading within the viewport. */
+    .about-cta p{
+        font-size:15px;
+        line-height:1.8;
+        /* Reduce choose-us card image height on mobile. */
+    }
+            /* Keep the card content compact. */
+
+    .about-meta span{
+        font-size:13px;
+        /* Tighten trust item spacing on mobile. */
+        padding:9px 14px;
+            /* Reduce the gap between trust items. */
+    }
+
+    .founder-content h4{
+        /* Make call-to-action buttons fit mobile layouts. */
+        font-size:16px;
+            /* Let the button fill the available width. */
+    }
+            /* Keep the button from becoming excessively wide. */
+
     .founder-image img{
         max-width:260px;
+        /* Reduce navbar padding on mobile. */
     }
+            /* Use smaller horizontal header spacing. */
 
     .about-gallery .project-card img{
         height:190px;
+        /* Align the mobile menu with the narrower header. */
     }
+            /* Use compact horizontal offsets on mobile. */
 
+            /* Match the left offset on the opposite side. */
     .chooseus-card img{
         height:160px;
     }
